@@ -4,13 +4,14 @@ import torch
 import torch.nn as nn
 
 
-class Sampler(torch.nn.Module, ABC):
+class Sampler(nn.Module, ABC):
     # interface to sample from p_init
 
     def __init__(self, sample_shape: Tuple[int]):
         # shape: the shape of a single tensor, (c, h, w)
         super().__init__()
         self.sample_shape = sample_shape
+        self.register_buffer("dummy", torch.tensor(0,))
 
     def shape(self) -> Tuple[int]:
         return self.sample_shape
