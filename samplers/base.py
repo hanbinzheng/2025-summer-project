@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Tuple, Optional
+from typing import Tuple
 import torch
 import torch.nn as nn
 
@@ -17,6 +17,6 @@ class Sampler(nn.Module, ABC):
         return self.sample_shape
 
     @abstractmethod
-    def sample(self, num_samples: int) -> Tuple[torch.Tensor, Optional[torch.Tensor]]:
+    def sample(self, num_samples: int) -> torch.Tensor:
         # return num_samples from p_init, (num_samples, shape)
         pass

@@ -1,5 +1,5 @@
 from .base import Sampler
-from typing import Tuple, Optional
+from typing import Tuple
 import torch
 
 class IsotropicGaussian(Sampler):
@@ -7,6 +7,5 @@ class IsotropicGaussian(Sampler):
         super().__init__(sample_shape)
         self.register_buffer("std", torch.tensor(std))
 
-    def sample(self, num_samples: int) -> Tuple[torch.Tensor, Optional[torch.Tensor]]:
-        samples = self.std * torch.randn(num_samples, *self.sample_shape, device=self.std.device)
-        return samples, None
+    def sample(self, num_samples: int) -> torch.Tensor:
+        return self.std * torch.randn(num_samples, *self.sample_shape, device=self.std.device)
