@@ -22,7 +22,7 @@ class ConditionalPath(nn.Module, ABC):
         pass
 
     @abstractmethod
-    def conditional_vector_field(self, xt: torch.Tensor, z: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+    def conditional_velocity(self, xt: torch.Tensor, z: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
         """
         Evaluates the conditional vector field u_t(x|z)
         Args:

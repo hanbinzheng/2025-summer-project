@@ -89,7 +89,7 @@ class GaussianConditionalPath(ConditionalPath):
         xt = self.alpha(t) * z + self.beta(t) * x_init
         return xt
 
-    def conditional_vector_field(self, xt: torch.Tensor, z: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
+    def conditional_velocity(self, xt: torch.Tensor, z: torch.Tensor, t: torch.Tensor) -> torch.Tensor:
         alpha_t = self.alpha(t)
         beta_t = self.beta(t)
         d_alpha_dt = self.alpha.dt(t)
