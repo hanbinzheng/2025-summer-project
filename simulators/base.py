@@ -29,5 +29,5 @@ class Simulator(ABC):
         for index in range(nts-1):
             t = ts[:, index]
             dt = ts[:, index+1] - t
-            x = self.step(x, t, dt)
+            x = self.step(x, t, dt, **kwargs)
         return x
