@@ -37,17 +37,17 @@ trainer = CFGTrainerFM(
 )
 
 trainer.train(
-    num_epochs = 50,
+    num_epochs = 100,
     device = device,
     dataloader = dataloader,
-    project_name = "mnist"
+    project_name = "fm_unet_mnist"
 )
 
 generate_samples_and_save(
     model = unet,
     path = path,
     device = device,
-    save_path = "results/mnist/test.png",
+    save_path = "results/fm_unet_mnist/visualization1.png",
     labels = [i for i in range(1, 11)],
     samples_per_label = 8,
     simulator_type = "heun"
@@ -80,4 +80,4 @@ for idx, w in enumerate(guidance_scales):
     axes[idx].imshow(grid.permute(1, 2, 0).cpu(), cmap="gray")
     axes[idx].axis("off")
     axes[idx].set_title(f"Guidance: $w={w:.1f}$", fontsize=25)
-plt.savefig("results/mnist/new_visualize.png", dpi=300)
+plt.savefig("results/fm_unet_mnist/visualization2.png", dpi=300)
